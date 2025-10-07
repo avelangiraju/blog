@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>avrnotes - Educational Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+   
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+
+        :root {
+            --primary: #0969da;
+            --primary-dark: #0550ae;
+            --secondary: #656d76;
+            --accent: #cf222e;
+            --light: #f6f8fa;
+            --dark: #24292f;
+            --border: #d0d7de;
+            --card-bg: #ffffff;
+            --success: #1a7f37;
+            --warning: #9a6700;
+            --info: #0969da;
+            
+            /* Category Colors */
+            --teacher-diary: #8250df;
+            --learning-science: #1a7f37;
+            --critical-thinking: #9a6700;
+            --mathematics: #cf222e;
+            --english: #0969da;
+            --success-stories: #1f883d;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.5;
+            color: var(--dark);
+            background-color: var(--light);
+            min-height: 100vh;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            line-height: 1.25;
+            margin-bottom: 0.5em;
+        }
+
+         @font-face {
+            font-family: 'HolidayFree';
+            src: url('HolidayFreeRegular.woff2') format('woff2'),
+                url('HolidayFreeRegular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        p {
+            margin-bottom: 0.75em;
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+        }
+        
+        .logo span {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 400;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav ul li a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--dark);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            text-decoration: none;
+            color: var(--primary);
+        }
+        
+        nav ul li a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        
+        .mobile-menu-btn:hover {
+            background-color: var(--light);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 2.5rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Main Content */
+        main {
+            padding: 1.5rem 0 3rem;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        
+        /* Blog Posts - Compact Design */
+        .blog-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .post {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+            padding: 1.25rem;
+        }
+        
+        .post:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        }
+        
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--secondary);
+        }
+        
+        .post-category {
+            font-weight: 500;
+            padding: 0.2rem 0.6rem;
+            border-radius: 2em;
+            font-size: 0.75rem;
+        }
+        
+        .post-category.teacher-diary {
+            background-color: rgba(130, 80, 223, 0.1);
+            color: var(--teacher-diary);
+        }
+        
+        .post-category.learning-science {
+            background-color: rgba(26, 127, 55, 0.1);
+            color: var(--learning-science);
+        }
+        
+        .post-category.critical-thinking {
+            background-color: rgba(154, 103, 0, 0.1);
+            color: var(--critical-thinking);
+        }
+        
+        .post-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            line-height: 1.3;
+        }
+        
+        .post-excerpt {
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+            font-size: 0.9rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+        
+        .read-more i {
+            margin-left: 0.4rem;
+            transition: transform 0.2s;
+            font-size: 0.8rem;
+        }
+        
+        .read-more:hover i {
+            transform: translateX(2px);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        
+        .sidebar-widget {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.25rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+        }
+        
+        .widget-title {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--dark);
+        }
+        
+        .categories-list {
+            list-style: none;
+        }
+        
+        .categories-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .categories-list li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .categories-list a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.4rem 0;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+        
+        .categories-list a:hover {
+            text-decoration: none;
+            color: var(--primary);
+        }
+        
+        .category-count {
+            background-color: var(--light);
+            color: var(--secondary);
+            padding: 0.15rem 0.5rem;
+            border-radius: 2em;
+            font-size: 0.75rem;
+        }
+        
+        .categories-list a.active {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .categories-list a.active .category-count {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .recent-posts li {
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .recent-posts li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .recent-post-title {
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+            font-size: 0.9rem;
+            line-height: 1.3;
+        }
+        
+        .recent-post-date {
+            font-size: 0.75rem;
+            color: var(--secondary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border);
+            padding: 2rem 0 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+        }
+        
+        #blog-title {
+          font-family: HolidayFree;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background-color: var(--light);
+            border-radius: 6px;
+            transition: background-color 0.2s;
+            font-size: 0.9rem;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--secondary);
+            font-size: 0.85rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                text-align: left;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                margin-top: 0;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+            
+            .post {
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                width: 95%;
+                padding: 0 15px;
+            }
+            
+            .post-title {
+                font-size: 1rem;
+            }
+            
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: static;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 1rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--card-bg);
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                border-bottom: 1px solid var(--border);
+                z-index: 99;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: left;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 0.75rem 20px;
+                font-size: 1rem;
+            }
+            
+            .blog-posts {
+                gap: 0.75rem;
+            }
+            
+            .post-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .read-more {
+                font-size: 0.9rem;
+                padding: 8px 0; /* Better touch target */
+            }
+            
+            .categories-list a,
+            .footer-links a {
+                padding: 10px 0; /* Better touch targets */
+            }
+        }
+
+        /* Category filtering styles */
+        .post.hidden {
+            display: none;
+        }
+        
+        /* Fallback font for HolidayFree */
+        .logo strong {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-book-open logo-icon"></i>
+                    <strong id="blog-title">avrnotes</strong> <br>
+                    <span>Educational Blog</span>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="#" class="nav-category active" data-category="all"></a></li>
+                        <li><a href="#" class="nav-category" data-category="Resources"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>The Chalkboard Chronicles</h1>
+            <p>Stories, insights, and updates from the evolving world of education</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="main-content">
+            <!-- Blog Posts -->
+            <section class="blog-posts">
+                <article class="post" data-categories="teacher-diary">
+                    <div class="post-meta">
+                        <span class="post-category teacher-diary">Teacher's Diary</span>
+                        <span class="post-date">October 05, 2025</span>
+                    </div>
+                    <h2 class="post-title">రాజధర్మం</h2>
+                    <p class="post-excerpt">పాఠ్యాంశం పేరు: 9. రాజధర్మం, తరగతి: 10, నెల: అక్టోబర్</p>
+                    <a href="#" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                </article>
+                
+                <article class="post" data-categories="learning-science">
+                    <div class="post-meta">
+                        <span class="post-category learning-science">Learning Science</span>
+                        <span class="post-date">June 18, 2023</span>
+                    </div>
+                    <h2 class="post-title">The Art of Effective Learning Strategies</h2>
+                    <p class="post-excerpt">Exploring evidence-based techniques that enhance knowledge retention and skill acquisition in modern education.</p>
+                    <a href="#" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                </article>
+                
+                <article class="post" data-categories="teacher-diary">
+                    <div class="post-meta">
+                        <span class="post-category teacher-diary">Teacher's Diary</span>
+                        <span class="post-date">October 05, 2025</span>
+                    </div>
+                    <h2 class="post-title">Every Drop is Precious</h2>
+                    <p class="post-excerpt">Lesson: Every Drop Is Precious, Class: 5, Month: September</p>
+                    <a href="#" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                </article>
+                
+                <article class="post" data-categories="critical-thinking">
+                    <div class="post-meta">
+                        <span class="post-category critical-thinking">Critical Thinking</span>
+                        <span class="post-date">June 5, 2023</span>
+                    </div>
+                    <h2 class="post-title">Critical Thinking in the Digital Information Age</h2>
+                    <p class="post-excerpt">Developing analytical skills to navigate the vast information landscape and identify biases in modern media.</p>
+                    <a href="#" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <article class="post" data-categories="teacher-diary">
+                    <div class="post-meta">
+                        <span class="post-category teacher-diary">Teacher's Diary</span>
+                        <span class="post-date">September 28, 2025</span>
+                    </div>
+                    <h2 class="post-title">Mathematics Teaching Strategies</h2>
+                    <p class="post-excerpt">Innovative approaches to teaching complex mathematical concepts to elementary students.</p>
+                    <a href="#" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <article class="post" data-categories="learning-science">
+                    <div class="post-meta">
+                        <span class="post-category learning-science">Learning Science</span>
+                        <span class="post-date">September 15, 2025</span>
+                    </div>
+                    <h2 class="post-title">The Science of Memory Retention</h2>
+                    <p class="post-excerpt">How cognitive science principles can be applied to improve long-term knowledge retention in students.</p>
+                    <a href="#" class="read-more">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                </article>
+            </section>
+            
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Categories</h3>
+                    <ul class="categories-list">
+                        <li>
+                            <a href="#" class="category-btn active" data-category="all">All Posts <span class="category-count">6</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-btn" data-category="teacher-diary">Teacher's Diary <span class="category-count">3</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-btn" data-category="success-stories">Success Stories <span class="category-count">2</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-btn" data-category="english-essentials">English Essentials <span class="category-count">1</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-btn" data-category="mathematics">Mathematics <span class="category-count">0</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-btn" data-category="education-news">Education news <span class="category-count">0</span></a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Recent Posts</h3>
+                    <ul class="categories-list recent-posts">
+                        <li>
+                            <a href="#" class="recent-post-title">టీచర్ డైరీ: రాజధర్మం</a>
+                            <div class="recent-post-date">October 05, 2025</div>
+                        </li>
+                        <li>
+                            <a href="#" class="recent-post-title">Teacher's Diary: Every Drop is Precious</a>
+                            <div class="recent-post-date">October 05, 2025</div>
+                        </li>
+                        <li>
+                            <a href="#" class="recent-post-title">Mathematics Teaching Strategies</a>
+                            <div class="recent-post-date">September 28, 2025</div>
+                        </li>
+                        <li>
+                            <a href="#" class="recent-post-title">The Science of Memory Retention</a>
+                            <div class="recent-post-date">September 15, 2025</div>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About This Blog</h3>
+                    <p>avrnotes is dedicated to exploring timeless educational principles and their application in modern learning environments.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Contributions</a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#">Resources</a></li>
+                        <li><a href="#">About me</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Content Guide</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Textbooks</a></li>
+                        <li><a href="#">Primary Education Portal</a></li>
+                        <li><a href="#">Teacher Handbooks</a></li>
+                        <li><a href="#">Best Practices</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 avrnotes. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('active');
+            
+            // Toggle aria-expanded attribute for accessibility
+            const isExpanded = nav.classList.contains('active');
+            this.setAttribute('aria-expanded', isExpanded);
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('#mainNav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const nav = document.getElementById('mainNav');
+                if (window.innerWidth <= 576) {
+                    nav.classList.remove('active');
+                    document.getElementById('mobileMenuBtn').setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('mainNav');
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            
+            if (window.innerWidth <= 576 && 
+                nav.classList.contains('active') && 
+                !nav.contains(event.target) && 
+                !menuBtn.contains(event.target)) {
+                nav.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Category filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn, .nav-category');
+            const posts = document.querySelectorAll('.post');
+            
+            function filterPosts(category) {
+                // Update active button
+                categoryButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-category') === category) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                // Filter posts
+                posts.forEach(post => {
+                    if (category === 'all') {
+                        post.classList.remove('hidden');
+                    } else {
+                        const postCategories = post.getAttribute('data-categories');
+                        if (postCategories && postCategories.includes(category)) {
+                            post.classList.remove('hidden');
+                        } else {
+                            post.classList.add('hidden');
+                        }
+                    }
+                });
+                
+                // Update URL
+                history.pushState({category: category}, '', `?category=${category}`);
+            }
+            
+            // Add event listeners to category buttons
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const category = this.getAttribute('data-category');
+                    filterPosts(category);
+                });
+            });
+            
+            // Check URL for initial category
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialCategory = urlParams.get('category') || 'all';
+            filterPosts(initialCategory);
+        });
+    </script>
+</body>
+</html>
