@@ -4,99 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ఉపాధ్యాయుని దినచర్య - రాజధర్మం</title>
-
-        <style>
-        @import url('https://fonts.googleapis.com/css2?family=Mandali&display=swap');
-       
-
-        * { 
+    <style>
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --border-color: #bdc3c7;
+        }
+        
         body {
-            font-family:"Mandali", sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             background-color: #f8f9fa;
-            color: #333;
-            padding: 20px;
+            color: var(--text-color);
+            padding: 15px;
         }
         
         .container {
-            max-width: 1200px;
-            overflow-x: auto;
+            max-width: 100%;
             margin: 0 auto;
             background-color: white;
-            padding: 30px;
+            padding: 20px 15px;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         
-        .mandali-regular {
-            font-family: "Mandali", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-        }
-
         header {
             text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            color:black;
-            font-weight: bold;
-            border-bottom: 2px solid #3498db;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
         }
         
         h1 {
-            font-weight: 300;
-            color: #000000;
-            font-size: 28px;
-            margin-bottom: 10px;
+            color: var(--dark-color);
+            font-size: 22px;
+            margin-bottom: 8px;
         }
         
         h2 {
-            color: #2980b9;
-            margin: 25px 0 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #ecf0f1;
+            color: var(--secondary-color);
+            margin: 20px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--light-color);
+            font-size: 18px;
         }
         
         h3 {
             color: #16a085;
-            margin: 20px 0 10px;
+            margin: 15px 0 8px;
+            font-size: 16px;
         }
         
         .lesson-info {
-            background-color: #ecf0f1;
-            padding: 20px;
+            background-color: var(--light-color);
+            padding: 15px;
             border-radius: 8px;
-            margin-bottom: 25px;
-            border-left: 5px solid #3498db;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-color);
         }
         
         .info-item {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.05);
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 25px 0;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            min-width: 800px; /* Ensures table doesn't get too narrow */
         }
         
         th, td {
-            border: 1px solid #bdc3c7;
-            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            padding: 10px 12px;
             text-align: left;
+            font-size: 14px;
         }
         
         th {
-            background-color: #3498db;
+            background-color: var(--primary-color);
             color: white;
-            font-weight: 300;
-            font-size: 18px;
+            font-weight: bold;
         }
         
         tr:nth-child(even) {
@@ -109,16 +114,16 @@
         
         .reflection-section {
             background-color: #f9f9f9;
-            padding: 25px;
+            padding: 20px 15px;
             border-radius: 8px;
-            margin-top: 30px;
-            border-left: 5px solid #e74c3c;
+            margin-top: 25px;
+            border-left: 5px solid var(--accent-color);
         }
         
         .reflection-item {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px dashed #bdc3c7;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
         }
         
         .reflection-item:last-child {
@@ -129,43 +134,149 @@
         
         .question {
             font-weight: bold;
-            color: #c0392b;
-            margin-bottom: 10px;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+            font-size: 15px;
         }
         
         .answer {
-            padding-left: 20px;
+            padding-left: 15px;
             text-align: justify;
+            font-size: 14px;
         }
         
         .separator {
             height: 1px;
-            background: linear-gradient(to right, transparent, #3498db, transparent);
-            margin: 25px 0;
+            background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+            margin: 20px 0;
         }
         
         footer {
             text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #ecf0f1;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid var(--light-color);
             color: #7f8c8d;
-            font-size: 14px;
+            font-size: 13px;
         }
         
+        /* Mobile-specific improvements */
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
             .container {
-                padding: 15px;
-                
+                padding: 15px 10px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            h2 {
+                font-size: 17px;
+            }
+            
+            .lesson-info {
+                padding: 12px;
             }
             
             th, td {
                 padding: 8px 10px;
+                font-size: 13px;
+            }
+            
+            .reflection-section {
+                padding: 15px 10px;
+            }
+            
+            .question, .answer {
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 18px;
+            }
+            
+            h2 {
+                font-size: 16px;
+            }
+            
+            th, td {
+                padding: 6px 8px;
+                font-size: 12px;
+            }
+            
+            .question, .answer {
+                font-size: 13px;
+            }
+        }
+        
+        /* Card layout for better mobile experience */
+        .card-view {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .table-container {
+                display: none;
+            }
+            
+            .card-view {
+                display: block;
+            }
+            
+            .lesson-card {
+                background: white;
+                border-radius: 8px;
+                padding: 15px;
+                margin-bottom: 15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                border-left: 4px solid var(--primary-color);
+            }
+            
+            .card-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                padding-bottom: 8px;
+                border-bottom: 1px dashed var(--border-color);
+            }
+            
+            .lesson-no {
+                font-weight: bold;
+                color: var(--primary-color);
+            }
+            
+            .lesson-date {
+                color: #7f8c8d;
                 font-size: 14px;
             }
             
-            h1 {
-                font-size: 24px;
+            .card-content {
+                margin-bottom: 10px;
+            }
+            
+            .card-row {
+                margin-bottom: 8px;
+            }
+            
+            .card-label {
+                font-weight: bold;
+                color: var(--dark-color);
+                display: inline-block;
+                min-width: 120px;
+            }
+            
+            .remarks {
+                background-color: #e8f4fc;
+                padding: 10px;
+                border-radius: 5px;
+                margin-top: 10px;
+                font-style: italic;
             }
         }
     </style>
@@ -183,84 +294,284 @@
             <div class="info-item"><strong>నెల:</strong> అక్టోబర్</div>
         </div>
         
-        <table>
-            <thead>
-                <tr>
-                    <th>పీ. నం</th>
-                    <th>బోధనాంశం</th>
-                    <th>తేదీ</th>
-                    <th>బోధనలో అనుసరించవలసిన కృత్యాలు</th>
-                    <th>బోధనోపకరణమలు (TLM)</th>
-                    <th>రిమార్క్స్ (Remarks)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>9.1</strong></td>
-                    <td>చదవండి -ఆలోచించి చెప్పండి, ఉద్దేశం, కవి పరిచయం, ప్రక్రియ</td>
-                    <td>Oct 6</td>
-                    <td>పరిచయ పద్యాన్ని చర్చించడం; పాఠం ఉద్దేశ్యం, ప్రక్రియ (ప్రబంధం), కవి (శ్రీ కృష్ణదేవరాయలు) గురించి వివరించడం.</td>
-                    <td>చిత్రపటం, కవి పరిచయ పటం.</td>
-                    <td>విద్యార్థులు పాఠ్యాంశ ఉద్దేశం, ప్రక్రియ మరియు కవి గురించి అవగాహన పరుచుకోగలరు.</td>
-                </tr>
-                <tr>
-                    <td><strong>9.2</strong></td>
-                    <td>పాఠంలోని 1 - 4 పద్యాలు</td>
-                    <td>Oct 7</td>
-                    <td>పద్యాలను రాగయుక్తంగా పాడటం; పాలకుని బాధ్యతలు, మంత్రి లక్షణాల గురించి వివరించడం; జట్టు కృత్యం: పర్యాయపదాలు, ప్రకృతి-వికృతులను గుర్తించడం.</td>
-                    <td>పాఠ్య పుస్తకం, నిఘంటువు.</td>
-                    <td>గొప్ప నాయకులుగా ఎదగడానికి అవసరమైన లక్షణాలను పెంపొందించుకోగలరు.</td>
-                </tr>
-                <tr>
-                    <td><strong>9.3</strong></td>
-                    <td>పాఠంలోని 5 - 9 పద్యాలు</td>
-                    <td>Oct 8</td>
-                    <td>పద్యాలను రాగయుక్తంగా పాడటం; చాడీలు, పన్ను విధానాలు, కరువు సమయంలో ప్రజల సంక్షేమం గురించి చర్చించడం; జట్టు కృత్యం: ప్రశ్నల తయారీ.</td>
-                    <td>పాఠ్య పుస్తకం, నిఘంటువు.</td>
-                    <td>ప్రజల కష్టసుఖాలను పోగొట్టగలగాలని గ్రహించగలరు.</td>
-                </tr>
-                <tr>
-                    <td><strong>9.4</strong></td>
-                    <td>పాఠంలోని 10 - 13 పద్యాలు</td>
-                    <td>Oct 9</td>
-                    <td>పద్యాలను రాగయుక్తంగా పాడటం; శత్రువుల పట్ల జాగరూకత, శిక్షావిధానం, అనుచరుల రకాల గురించి బోధించడం.</td>
-                    <td>పాఠ్య పుస్తకం, నిఘంటువు.</td>
-                    <td>రాజు ఎప్పుడూ జాగరూకతతో ఉండాలని గ్రహించగలరు.</td>
-                </tr>
-                <tr>
-                    <td><strong>9.5</strong></td>
-                    <td>అవగాహన ప్రతిస్పందన</td>
-                    <td>Oct 10</td>
-                    <td>పాఠం ఆధారంగా ఇచ్చిన ప్రశ్నలకు సమాధానాలు రాయడం, అపరిచిత గద్య, పద్యాలను చదివి అర్థం చేసుకోవడం.</td>
-                    <td>పాఠ్య పుస్తకం.</td>
-                    <td>పాఠ్యాంశ సంబంధిత ప్రశ్నలకు సమాధానాలు రాయగలరు.</td>
-                </tr>
-                <tr>
-                    <td><strong>9.6</strong></td>
-                    <td>వ్యక్తీకరణ సృజనాత్మకత</td>
-                    <td>Oct 14</td>
-                    <td>పాఠశాలకు నాయకులైతే చేపట్టే కార్యక్రమాలపై వ్యాసం రాయడం; ప్రజా ప్రతినిధిని ప్రశంసిస్తూ అభినందన పత్రం తయారు చేయడం.</td>
-                    <td>పాఠ్య పుస్తకం.</td>
-                    <td>వ్యాసం, అభినందన పత్రం రాయగలరు.</td>
-                </tr>
-                <tr>
-                    <td><strong>9.7</strong></td>
-                    <td>పదజాలం</td>
-                    <td>Oct 15</td>
-                    <td>అర్థాలు, నానార్థాలు, పర్యాయపదాలు, ప్రకృతి-వికృతులు, వ్యుత్పత్త్యర్థాలు వంటి పదజాల అభ్యాసాలు చేయడం.</td>
-                    <td>నిఘంటువు, పాఠ్య పుస్తకం.</td>
-                    <td>పదజాలంలోని అభ్యాసాలను పూర్తి చేయగలరు.</td>
-                </tr>
-                <tr>
-                    <td><strong>9.8</strong></td>
-                    <td>వ్యాకరణాంశాలు</td>
-                    <td>Oct 17</td>
-                    <td>వ్యాకరణాంశాలు: జశ్త్వ సంధి, సమాసాలు, శ్లేషాలంకారం, యమకాలంకారం, కంద పద్య లక్షణాలను అభ్యాసం చేయడం.</td>
-                    <td>బాలవ్యాకరణం, వ్యాకరణ పటాలు.</td>
-                    <td>వ్యాకరణాంశాలలోని అభ్యాసాలు పూర్తి చేయగలరు.</td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- Table view for larger screens -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>పీ. నం</th>
+                        <th>బోధనాంశం</th>
+                        <th>తేదీ</th>
+                        <th>బోధనలో అనుసరించవలసిన కృత్యాలు</th>
+                        <th>బోధనోపకరణమలు (TLM)</th>
+                        <th>రిమార్క్స్ (Remarks)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>9.1</strong></td>
+                        <td>చదవండి -ఆలోచించి చెప్పండి, ఉద్దేశం, కవి పరిచయం, ప్రక్రియ</td>
+                        <td>Oct 6</td>
+                        <td>పరిచయ పద్యాన్ని చర్చించడం; పాఠం ఉద్దేశ్యం, ప్రక్రియ (ప్రబంధం), కవి (శ్రీ కృష్ణదేవరాయలు) గురించి వివరించడం.</td>
+                        <td>చిత్రపటం, కవి పరిచయ పటం.</td>
+                        <td>విద్యార్థులు పాఠ్యాంశ ఉద్దేశం, ప్రక్రియ మరియు కవి గురించి అవగాహన పరుచుకోగలరు.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>9.2</strong></td>
+                        <td>పాఠంలోని 1 - 4 పద్యాలు</td>
+                        <td>Oct 7</td>
+                        <td>పద్యాలను రాగయుక్తంగా పాడటం; పాలకుని బాధ్యతలు, మంత్రి లక్షణాల గురించి వివరించడం; జట్టు కృత్యం: పర్యాయపదాలు, ప్రకృతి-వికృతులను గుర్తించడం.</td>
+                        <td>పాఠ్య పుస్తకం, నిఘంటువు.</td>
+                        <td>గొప్ప నాయకులుగా ఎదగడానికి అవసరమైన లక్షణాలను పెంపొందించుకోగలరు.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>9.3</strong></td>
+                        <td>పాఠంలోని 5 - 9 పద్యాలు</td>
+                        <td>Oct 8</td>
+                        <td>పద్యాలను రాగయుక్తంగా పాడటం; చాడీలు, పన్ను విధానాలు, కరువు సమయంలో ప్రజల సంక్షేమం గురించి చర్చించడం; జట్టు కృత్యం: ప్రశ్నల తయారీ.</td>
+                        <td>పాఠ్య పుస్తకం, నిఘంటువు.</td>
+                        <td>ప్రజల కష్టసుఖాలను పోగొట్టగలగాలని గ్రహించగలరు.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>9.4</strong></td>
+                        <td>పాఠంలోని 10 - 13 పద్యాలు</td>
+                        <td>Oct 9</td>
+                        <td>పద్యాలను రాగయుక్తంగా పాడటం; శత్రువుల పట్ల జాగరూకత, శిక్షావిధానం, అనుచరుల రకాల గురించి బోధించడం.</td>
+                        <td>పాఠ్య పుస్తకం, నిఘంటువు.</td>
+                        <td>రాజు ఎప్పుడూ జాగరూకతతో ఉండాలని గ్రహించగలరు.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>9.5</strong></td>
+                        <td>అవగాహన ప్రతిస్పందన</td>
+                        <td>Oct 10</td>
+                        <td>పాఠం ఆధారంగా ఇచ్చిన ప్రశ్నలకు సమాధానాలు రాయడం, అపరిచిత గద్య, పద్యాలను చదివి అర్థం చేసుకోవడం.</td>
+                        <td>పాఠ్య పుస్తకం.</td>
+                        <td>పాఠ్యాంశ సంబంధిత ప్రశ్నలకు సమాధానాలు రాయగలరు.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>9.6</strong></td>
+                        <td>వ్యక్తీకరణ సృజనాత్మకత</td>
+                        <td>Oct 14</td>
+                        <td>పాఠశాలకు నాయకులైతే చేపట్టే కార్యక్రమాలపై వ్యాసం రాయడం; ప్రజా ప్రతినిధిని ప్రశంసిస్తూ అభినందన పత్రం తయారు చేయడం.</td>
+                        <td>పాఠ్య పుస్తకం.</td>
+                        <td>వ్యాసం, అభినందన పత్రం రాయగలరు.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>9.7</strong></td>
+                        <td>పదజాలం</td>
+                        <td>Oct 15</td>
+                        <td>అర్థాలు, నానార్థాలు, పర్యాయపదాలు, ప్రకృతి-వికృతులు, వ్యుత్పత్త్యర్థాలు వంటి పదజాల అభ్యాసాలు చేయడం.</td>
+                        <td>నిఘంటువు, పాఠ్య పుస్తకం.</td>
+                        <td>పదజాలంలోని అభ్యాసాలను పూర్తి చేయగలరు.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>9.8</strong></td>
+                        <td>వ్యాకరణాంశాలు</td>
+                        <td>Oct 17</td>
+                        <td>వ్యాకరణాంశాలు: జశ్త్వ సంధి, సమాసాలు, శ్లేషాలంకారం, యమకాలంకారం, కంద పద్య లక్షణాలను అభ్యాసం చేయడం.</td>
+                        <td>బాలవ్యాకరణం, వ్యాకరణ పటాలు.</td>
+                        <td>వ్యాకరణాంశాలలోని అభ్యాసాలు పూర్తి చేయగలరు.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Card view for mobile screens -->
+        <div class="card-view">
+            <div class="lesson-card">
+                <div class="card-header">
+                    <div class="lesson-no">9.1</div>
+                    <div class="lesson-date">Oct 6</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-row">
+                        <span class="card-label">బోధనాంశం:</span>
+                        చదవండి -ఆలోచించి చెప్పండి, ఉద్దేశం, కవి పరిచయం, ప్రక్రియ
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">కృత్యాలు:</span>
+                        పరిచయ పద్యాన్ని చర్చించడం; పాఠం ఉద్దేశ్యం, ప్రక్రియ (ప్రబంధం), కవి (శ్రీ కృష్ణదేవరాయలు) గురించి వివరించడం.
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">బోధనోపకరణమలు:</span>
+                        చిత్రపటం, కవి పరిచయ పటం.
+                    </div>
+                    <div class="remarks">
+                        విద్యార్థులు పాఠ్యాంశ ఉద్దేశం, ప్రక్రియ మరియు కవి గురించి అవగాహన పరుచుకోగలరు.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lesson-card">
+                <div class="card-header">
+                    <div class="lesson-no">9.2</div>
+                    <div class="lesson-date">Oct 7</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-row">
+                        <span class="card-label">బోధనాంశం:</span>
+                        పాఠంలోని 1 - 4 పద్యాలు
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">కృత్యాలు:</span>
+                        పద్యాలను రాగయుక్తంగా పాడటం; పాలకుని బాధ్యతలు, మంత్రి లక్షణాల గురించి వివరించడం; జట్టు కృత్యం: పర్యాయపదాలు, ప్రకృతి-వికృతులను గుర్తించడం.
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">బోధనోపకరణమలు:</span>
+                        పాఠ్య పుస్తకం, నిఘంటువు.
+                    </div>
+                    <div class="remarks">
+                        గొప్ప నాయకులుగా ఎదగడానికి అవసరమైన లక్షణాలను పెంపొందించుకోగలరు.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lesson-card">
+                <div class="card-header">
+                    <div class="lesson-no">9.3</div>
+                    <div class="lesson-date">Oct 8</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-row">
+                        <span class="card-label">బోధనాంశం:</span>
+                        పాఠంలోని 5 - 9 పద్యాలు
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">కృత్యాలు:</span>
+                        పద్యాలను రాగయుక్తంగా పాడటం; చాడీలు, పన్ను విధానాలు, కరువు సమయంలో ప్రజల సంక్షేమం గురించి చర్చించడం; జట్టు కృత్యం: ప్రశ్నల తయారీ.
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">బోధనోపకరణమలు:</span>
+                        పాఠ్య పుస్తకం, నిఘంటువు.
+                    </div>
+                    <div class="remarks">
+                        ప్రజల కష్టసుఖాలను పోగొట్టగలగాలని గ్రహించగలరు.
+                    </div>
+                </div>
+            </div>
+            
+          <div class="lesson-card">
+                <div class="card-header">
+                    <div class="lesson-no">9.4</div>
+                    <div class="lesson-date">Oct 9</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-row">
+                        <span class="card-label">బోధనాంశం:</span>
+                        పాఠంలోని 10 - 13 పద్యాలు 
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">కృత్యాలు:</span>
+                        పద్యాలను రాగయుక్తంగా పాడటం; శత్రువుల పట్ల జాగరూకత, శిక్షావిధానం, అనుచరుల రకాల గురించి బోధించడం.
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">బోధనోపకరణమలు:</span>
+                        పాఠ్య పుస్తకం, నిఘంటువు.
+                    </div>
+                    <div class="remarks">
+                        రాజు ఎప్పుడూ జాగరూకతతో ఉండాలని గ్రహించగలరు.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lesson-card">
+                <div class="card-header">
+                    <div class="lesson-no">9.5</div>
+                    <div class="lesson-date">Oct 10</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-row">
+                        <span class="card-label">బోధనాంశం:</span>
+                        అవగాహన ప్రతిస్పందన
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">కృత్యాలు:</span>
+                        పాఠం ఆధారంగా ఇచ్చిన ప్రశ్నలకు సమాధానాలు రాయడం, అపరిచిత గద్య, పద్యాలను చదివి అర్థం చేసుకోవడం.
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">బోధనోపకరణమలు:</span>
+                        పాఠ్య పుస్తకం.
+                    </div>
+                    <div class="remarks">
+                        పాఠ్యాంశ సంబంధిత ప్రశ్నలకు సమాధానాలు రాయగలరు.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lesson-card">
+                <div class="card-header">
+                    <div class="lesson-no">9.6</div>
+                    <div class="lesson-date">Oct 14</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-row">
+                        <span class="card-label">బోధనాంశం:</span>
+                        వ్యక్తీకరణ సృజనాత్మకత
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">కృత్యాలు:</span>
+                        పాఠశాలకు నాయకులైతే చేపట్టే కార్యక్రమాలపై వ్యాసం రాయడం; ప్రజా ప్రతినిధిని ప్రశంసిస్తూ అభినందన పత్రం తయారు చేయడం.
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">బోధనోపకరణమలు:</span>
+                        పాఠ్య పుస్తకం.
+                    </div>
+                    <div class="remarks">
+                        వ్యాసం, అభినందన పత్రం రాయగలరు.
+                    </div>
+                </div>
+            </div>
+          
+          <div class="lesson-card">
+                <div class="card-header">
+                    <div class="lesson-no">9.7</div>
+                    <div class="lesson-date">Oct 15</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-row">
+                        <span class="card-label">బోధనాంశం:</span>
+                        పదజాలం
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">కృత్యాలు:</span>
+                        అర్థాలు, నానార్థాలు, పర్యాయపదాలు, ప్రకృతి-వికృతులు, వ్యుత్పత్త్యర్థాలు వంటి పదజాల అభ్యాసాలు చేయడం.
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">బోధనోపకరణమలు:</span>
+                       నిఘంటువు, పాఠ్య పుస్తకం.
+                    </div>
+                    <div class="remarks">
+                        పదజాలంలోని అభ్యాసాలను పూర్తి చేయగలరు.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lesson-card">
+                <div class="card-header">
+                    <div class="lesson-no">9.8</div>
+                    <div class="lesson-date">Oct 17</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-row">
+                        <span class="card-label">బోధనాంశం:</span>
+                        వ్యాకరణాంశాలు
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">కృత్యాలు:</span>
+                        వ్యాకరణాంశాలు: జశ్త్వ సంధి, సమాసాలు, శ్లేషాలంకారం, యమకాలంకారం, కంద పద్య లక్షణాలను అభ్యాసం చేయడం.
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">బోధనోపకరణమలు:</span>
+                        బాలవ్యాకరణం, వ్యాకరణ పటాలు.
+                    </div>
+                    <div class="remarks">
+                        వ్యాకరణాంశాలలోని అభ్యాసాలు పూర్తి చేయగలరు.
+                    </div>
+                </div>
+            </div>
+            <!-- Additional cards would go here for the remaining lessons -->
+            <!-- For brevity, I'm showing only three cards as examples -->
+        </div>
         
         <div class="separator"></div>
         
