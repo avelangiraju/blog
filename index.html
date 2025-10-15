@@ -15,32 +15,35 @@
             box-sizing: border-box;
         }
         
-
         :root {
-            --primary: #0969da;
-            --primary-dark: #0550ae;
-            --secondary: #656d76;
-            --accent: #cf222e;
-            --light: #f6f8fa;
-            --dark: #24292f;
-            --border: #d0d7de;
+            /* Professional Education Color Palette - Refined */
+            --primary: #1a4b8c;
+            --primary-dark: #0d2b5a;
+            --primary-light: #3a6fc8;
+            --secondary: #5a6c7d;
+            --accent: #e74c3c;
+            --accent-light: #ff7b6b;
+            --light: #f5f7fa;
+            --dark: #2c3e50;
+            --border: #e1e8ed;
             --card-bg: #ffffff;
-            --success: #1a7f37;
-            --warning: #9a6700;
-            --info: #0969da;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --info: #3498db;
             
-            /* Category Colors */
-            --teacher-diary: #8250df;
-            --learning-science: #1a7f37;
-            --critical-thinking: #9a6700;
-            --mathematics: #cf222e;
-            --english: #0969da;
-            --success-stories: #1f883d;
+            /* Category Colors - Professional Education Theme */
+            --teacher-diary: #8e44ad;
+            --learning-science: #16a085;
+            --critical-thinking: #d35400;
+            --mathematics: #c0392b;
+            --english: #2980b9;
+            --success-stories: #27ae60;
+            --resources: #7f8c8d;
         }
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.5;
+            line-height: 1.6;
             color: var(--dark);
             background-color: var(--light);
             min-height: 100vh;
@@ -49,32 +52,30 @@
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Inter', sans-serif;
             font-weight: 600;
-            line-height: 1.25;
-            margin-bottom: 0.5em;
+            line-height: 1.3;
+            margin-bottom: 0.75em;
         }
-
-         @font-face {
+        
+        @font-face {
             font-family: 'HolidayFree';
-            src: url('HolidayFreeRegular.woff2') format('woff2'),
-                url('HolidayFreeRegular.woff') format('woff');
+            src: url('https://fonts.cdnfonts.com/s/85589/HolidayFree.woff') format('woff');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         
         p {
-            margin-bottom: 0.75em;
+            margin-bottom: 1em;
         }
         
         a {
             color: var(--primary);
             text-decoration: none;
-            transition: color 0.2s ease;
+            transition: all 0.2s ease;
         }
         
         a:hover {
             color: var(--primary-dark);
-            text-decoration: underline;
         }
         
         .container {
@@ -84,14 +85,14 @@
             padding: 0 20px;
         }
         
-        /* Header */
+        /* Header - Professional Design */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 1.5rem 0;
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 3px 5px rgba(0,0,0,0.4);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             margin-bottom: 1.5rem;
         }
         
@@ -103,28 +104,31 @@
         }
         
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: white;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
         
         .logo-icon {
             color: white;
+            font-size: 1.5rem;
         }
         
         .logo span {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85);
             font-weight: 400;
+            display: block;
+            margin-top: 2px;
         }
         
         nav ul {
             display: flex;
             list-style: none;
-            gap: 1.5rem;
+            gap: 2rem;
         }
         
         nav ul li a {
@@ -173,7 +177,7 @@
         
         /* Main Content */
         main {
-            padding: 1.5rem 0 3rem;
+            padding: 1rem 0 2rem;
         }
         
         .main-content {
@@ -184,24 +188,25 @@
         
         /* Blog Posts - Compact Design */
         .blog-posts {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.25rem;
         }
         
         .post {
             background-color: var(--card-bg);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             border: 1px solid var(--border);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.3s, box-shadow 0.3s;
             padding: 1.25rem;
+            height: fit-content;
         }
         
         .post:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
         .post-meta {
@@ -215,37 +220,44 @@
         
         .post-category {
             font-weight: 500;
-            padding: 0.2rem 0.6rem;
+            padding: 0.25rem 0.6rem;
             border-radius: 2em;
             font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .post-category.teacher-diary {
-            background-color: rgba(130, 80, 223, 0.1);
+            background-color: rgba(142, 68, 173, 0.1);
             color: var(--teacher-diary);
         }
         
         .post-category.learning-science {
-            background-color: rgba(26, 127, 55, 0.1);
+            background-color: rgba(22, 160, 133, 0.1);
             color: var(--learning-science);
         }
         
         .post-category.critical-thinking {
-            background-color: rgba(154, 103, 0, 0.1);
+            background-color: rgba(211, 84, 0, 0.1);
             color: var(--critical-thinking);
+        }
+        
+        .post-category.resources {
+            background-color: rgba(127, 140, 141, 0.1);
+            color: var(--resources);
         }
         
         .post-title {
             font-size: 1.1rem;
             margin-bottom: 0.5rem;
             color: var(--dark);
-            line-height: 1.3;
+            line-height: 1.4;
         }
         
         .post-excerpt {
             color: var(--secondary);
             margin-bottom: 0.75rem;
-            line-height: 1.4;
+            line-height: 1.5;
             font-size: 0.9rem;
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -259,12 +271,17 @@
             font-weight: 500;
             font-size: 0.85rem;
             color: var(--primary);
+            padding: 0.4rem 0;
         }
         
         .read-more i {
             margin-left: 0.4rem;
             transition: transform 0.2s;
             font-size: 0.8rem;
+        }
+        
+        .read-more:hover {
+            color: var(--primary-dark);
         }
         
         .read-more:hover i {
@@ -275,14 +292,14 @@
         .sidebar {
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            gap: 1.5rem;
         }
         
         .sidebar-widget {
             background-color: var(--card-bg);
             border-radius: 8px;
             padding: 1.25rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             border: 1px solid var(--border);
         }
         
@@ -292,6 +309,7 @@
             padding-bottom: 0.5rem;
             border-bottom: 1px solid var(--border);
             color: var(--dark);
+            font-weight: 600;
         }
         
         .categories-list {
@@ -313,11 +331,15 @@
             padding: 0.4rem 0;
             color: var(--dark);
             font-size: 0.9rem;
+            border-radius: 4px;
+            transition: all 0.2s;
         }
         
         .categories-list a:hover {
             text-decoration: none;
             color: var(--primary);
+            background-color: rgba(26, 75, 140, 0.05);
+            padding-left: 0.5rem;
         }
         
         .category-count {
@@ -331,6 +353,8 @@
         .categories-list a.active {
             color: var(--primary);
             font-weight: 500;
+            background-color: rgba(26, 75, 140, 0.08);
+            padding-left: 0.5rem;
         }
         
         .categories-list a.active .category-count {
@@ -338,26 +362,117 @@
             color: white;
         }
         
-      
+        /* Popular Posts Widget */
+        .popular-posts {
+            list-style: none;
+        }
+        
+        .popular-post {
+            display: flex;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .popular-post:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .popular-post-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 6px;
+            object-fit: cover;
+            margin-right: 0.75rem;
+            background-color: var(--light);
+        }
+        
+        .popular-post-content {
+            flex: 1;
+        }
+        
+        .popular-post-title {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+        }
+        
+        .popular-post-meta {
+            font-size: 0.75rem;
+            color: var(--secondary);
+        }
+        
+        /* Newsletter Widget */
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .newsletter-input {
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .newsletter-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .newsletter-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Tags Widget */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tag {
+            background-color: var(--light);
+            color: var(--secondary);
+            padding: 0.3rem 0.75rem;
+            border-radius: 2em;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        
+        .tag:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
         /* Footer */
         footer {
-            background-color: var(--card-bg);
-            border-top: 1px solid var(--border);
-            padding: 2rem 0 1.5rem;
-            margin-top: 2rem;
+            background-color: var(--dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 2.5rem 0 1.5rem;
+            margin-top: 2.5rem;
         }
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
         
         .footer-column h3 {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+            color: white;
         }
         
         .footer-links {
@@ -365,50 +480,52 @@
         }
         
         .footer-links li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
         
         .footer-links a {
-            color: var(--secondary);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
         }
         
         .footer-links a:hover {
-            color: var(--primary);
+            color: white;
         }
         
         .social-links {
             display: flex;
             gap: 0.75rem;
-            margin-top: 0.75rem;
+            margin-top: 1rem;
         }
         
         #blog-title {
-          font-family: HolidayFree;
+            font-family: 'HolidayFree', sans-serif;
+            font-size: 2rem;
         }
+        
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 32px;
-            height: 32px;
-            background-color: var(--light);
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 6px;
             transition: background-color 0.2s;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            color: white;
         }
         
         .social-links a:hover {
             background-color: var(--primary);
-            color: white;
             text-decoration: none;
         }
         
         .copyright {
             text-align: center;
             padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            color: var(--secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
             font-size: 0.85rem;
         }
         
@@ -416,11 +533,15 @@
         @media (max-width: 992px) {
             .main-content {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 2rem;
             }
             
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .blog-posts {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
         }
         
@@ -440,11 +561,19 @@
             
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 1.25rem;
+                gap: 1.5rem;
             }
             
             .post {
                 padding: 1rem;
+            }
+            
+            .sidebar-widget {
+                padding: 1rem;
+            }
+            
+            .blog-posts {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -499,7 +628,7 @@
             }
             
             .blog-posts {
-                gap: 0.75rem;
+                gap: 1rem;
             }
             
             .post-meta {
@@ -534,7 +663,7 @@
             background-color: var(--card-bg);
             border-radius: 8px;
             padding: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             border: 1px solid var(--border);
             margin-bottom: 1.5rem;
             display: none;
@@ -557,7 +686,7 @@
             width: 100%;
             height: 1200px ; 
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             background-color: var(--light);
         }
 
@@ -582,7 +711,6 @@
             background-color: var(--light);
             color: var(--dark);
         }
-
 
         .embedded-loading {
             display: flex;
@@ -639,9 +767,9 @@
             font-size: 0.9rem;
             color: var(--primary);
             margin-bottom: 1rem;
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1.25rem;
             background-color: var(--light);
-            border-radius: 4px;
+            border-radius: 6px;
             transition: background-color 0.2s;
         }
 
@@ -654,6 +782,33 @@
         .back-to-posts i {
             margin-right: 0.5rem;
         }
+        
+        /* Search Widget */
+        .search-form {
+            display: flex;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 6px 0 0 6px;
+            font-size: 0.9rem;
+        }
+        
+        .search-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1rem;
+            border-radius: 0 6px 6px 0;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .search-btn:hover {
+            background-color: var(--primary-dark);
+        }
     </style>
 </head>
 <body>
@@ -662,9 +817,11 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-book-open logo-icon"></i>
-                    <strong id="blog-title">avrnotes</strong> <br>
-                    <span>Educational Blog</span>
+                    <i class="fas fa-graduation-cap logo-icon"></i>
+                    <div>
+                        <strong id="blog-title">avrnotes</strong>
+                        <span>Educational Blog</span>
+                    </div>
                 </div>
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
                     <i class="fas fa-bars"></i>
@@ -672,7 +829,8 @@
                 <nav id="mainNav">
                     <ul>
                         <li><a href="#" class="nav-category active" data-category="all">All</a></li>
-                        <li><a href="#" class="nav-category" data-category="Resources">Resources</a></li>
+                        <li><a href="#" class="nav-category" data-category="teacher-diary">Teacher's Diary</a></li>
+                        <li><a href="#" class="nav-category" data-category="learning-science">Learning Science</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
@@ -771,40 +929,111 @@
                         <p class="post-excerpt">How cognitive science principles can be applied to improve long-term knowledge retention in students.</p>
                         <a href="https://example.com/memory-retention" class="read-more external-link" data-title="The Science of Memory Retention">Continue Reading <i class="fas fa-arrow-right"></i></a>
                     </article>
+                    
+                    <article class="post" data-categories="resources">
+                        <div class="post-meta">
+                            <span class="post-category resources">Resources</span>
+                            <span class="post-date">August 22, 2025</span>
+                        </div>
+                        <h2 class="post-title">Free Educational Tools for Teachers</h2>
+                        <p class="post-excerpt">A curated list of free digital tools and resources to enhance classroom teaching and student engagement.</p>
+                        <a href="https://example.com/free-tools" class="read-more external-link" data-title="Free Educational Tools for Teachers">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                    </article>
+                    
+                    <article class="post" data-categories="teacher-diary">
+                        <div class="post-meta">
+                            <span class="post-category teacher-diary">Teacher's Diary</span>
+                            <span class="post-date">August 10, 2025</span>
+                        </div>
+                        <h2 class="post-title">Classroom Management Techniques</h2>
+                        <p class="post-excerpt">Effective strategies for maintaining a positive and productive learning environment in diverse classrooms.</p>
+                        <a href="https://example.com/classroom-management" class="read-more external-link" data-title="Classroom Management Techniques">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                    </article>
                 </section>
             </div>
             
             <!-- Sidebar -->
             <aside class="sidebar">
                 <div class="sidebar-widget">
+                    <h3 class="widget-title">Search</h3>
+                    <form class="search-form">
+                        <input type="text" class="search-input" placeholder="Search articles...">
+                        <button type="submit" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="sidebar-widget">
                     <h3 class="widget-title">Categories</h3>
                     <ul class="categories-list">
                         <li>
-                            <a href="#" class="category-btn active" data-category="all">All Posts <span class="category-count">6</span></a>
+                            <a href="#" class="category-btn active" data-category="all">All Posts <span class="category-count">9</span></a>
                         </li>
                         <li>
-                            <a href="#" class="category-btn" data-category="teacher-diary">Teacher's Diary <span class="category-count">1</span></a>
+                            <a href="#" class="category-btn" data-category="teacher-diary">Teacher's Diary <span class="category-count">4</span></a>
                         </li>
                         <li>
-                            <a href="#" class="category-btn" data-category="success-stories">Success Stories <span class="category-count">2</span></a>
+                            <a href="#" class="category-btn" data-category="learning-science">Learning Science <span class="category-count">2</span></a>
                         </li>
                         <li>
-                            <a href="#" class="category-btn" data-category="english-essentials">English Essentials <span class="category-count">1</span></a>
+                            <a href="#" class="category-btn" data-category="critical-thinking">Critical Thinking <span class="category-count">1</span></a>
                         </li>
                         <li>
-                            <a href="#" class="category-btn" data-category="mathematics">Mathematics <span class="category-count">0</span></a>
-                        </li>
-                        <li>
-                            <a href="#" class="category-btn" data-category="education-news">Education news <span class="category-count">0</span></a>
+                            <a href="#" class="category-btn" data-category="resources">Resources <span class="category-count">1</span></a>
                         </li>
                     </ul>
                 </div>
                 
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Popular Posts</h3>
+                    <ul class="popular-posts">
+                        <li class="popular-post">
+                            <div class="popular-post-img"></div>
+                            <div class="popular-post-content">
+                                <h4 class="popular-post-title">The Science of Memory Retention</h4>
+                                <div class="popular-post-meta">Sept 15, 2025</div>
+                            </div>
+                        </li>
+                        <li class="popular-post">
+                            <div class="popular-post-img"></div>
+                            <div class="popular-post-content">
+                                <h4 class="popular-post-title">Classroom Management Techniques</h4>
+                                <div class="popular-post-meta">Aug 10, 2025</div>
+                            </div>
+                        </li>
+                        <li class="popular-post">
+                            <div class="popular-post-img"></div>
+                            <div class="popular-post-content">
+                                <h4 class="popular-post-title">Free Educational Tools for Teachers</h4>
+                                <div class="popular-post-meta">Aug 22, 2025</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
                 
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Newsletter</h3>
+                    <p>Stay updated with our latest educational content and resources.</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Your email address">
+                        <button type="submit" class="newsletter-btn">Subscribe</button>
+                    </form>
+                </div>
                 
-               
-                
-                
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Tags</h3>
+                    <div class="tags">
+                        <a href="#" class="tag">Education</a>
+                        <a href="#" class="tag">Teaching</a>
+                        <a href="#" class="tag">Learning</a>
+                        <a href="#" class="tag">Resources</a>
+                        <a href="#" class="tag">Classroom</a>
+                        <a href="#" class="tag">Strategies</a>
+                        <a href="#" class="tag">Science</a>
+                        <a href="#" class="tag">Mathematics</a>
+                    </div>
+                </div>
             </aside>
         </div>
     </main>
@@ -841,6 +1070,16 @@
                         <li><a href="#">Primary Education Portal</a></li>
                         <li><a href="#">Teacher Handbooks</a></li>
                         <li><a href="#">Best Practices</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:contact@avrnotes.com">contact@avrnotes.com</a></li>
+                        <li><a href="#">Submit an Article</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
